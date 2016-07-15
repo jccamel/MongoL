@@ -1,3 +1,3 @@
-![alt tag](https://drive.google.com/file/d/0B3gPWReEMNmPT1RiYUhnV0NpUUE/view?pref=2&pli=1)
+![alt tag](https://github.com/jccamel/MongoL/blob/master/pics/mongol.jpg?raw=true)
 # MongoL
 Mongodb Leaks
