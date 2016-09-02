@@ -72,7 +72,9 @@ class ShodanObject(object):
         self.port = 0
         self.transport = ""
         self.ip_str = ""
-        self.mongoinfo = {}
+        self.mongoinfo = {}  # Collections by Shodan info
+        self.collections = {}  # Collections after connect and ask
+        self.data_system = {}
 
     def __del__(self):
         pass
@@ -150,4 +152,15 @@ class ShodanObject(object):
         print 'Transport:' + '\t' + self.transport
         print 'IP:' + '\t' + self.ip_str
         print 'Mongo Info.:' + '\t' + str(self.mongoinfo)
+        print 'Mongo Data System:', "\t", self.data_system
+        print 'Collections:', "\t", self.collections
         print "--------------------------------------------------------------------"
+
+    def create_dict(self):
+        dict = dicct(producto=self.product, version=self.version,
+                     isp=self.isp, os=self.os, hostnames=self.hostnames, location=self.location,
+                     timestamp=self.timestamp, domains=self.domains,
+                     org=self.org, port=str(self.port), ip=str(self.ip_str),
+                     mongoinfo=self.mongoinfo, data_system=self.data_system,
+                     collections=self.collections)
+        return dict

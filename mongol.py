@@ -2,6 +2,8 @@
 
 from modules import *
 from ShodanClass import ShodanObject
+from MongodbClass import ConnectionMongodb
+from MongodbClass import ConnectionMlap
 
 data_file = "data/mongodb_list.json"
 
@@ -13,6 +15,15 @@ if __name__ == "__main__":
         banner = simplejson.loads(line)
         # --------------------------------------------
         s.banner_extractor(banner)
-        print s.print_object()
-        del s
+        c = ConnectionMongodb(s.ip_str, s.port)
+        test = False
+        data_system = {}
+        test, data_system = c.test_connection()
+        s.data_system = data_system
+        if test:
+            s.collections = c.get_collections()
+            mlab = ConnectionMlap()
+            mlab.insert_doc(s.create_dict())
+            del mlab
+        del c, s
     archive.close()
