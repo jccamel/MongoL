@@ -22,6 +22,7 @@ if __name__ == "__main__":
         s.data_system = data_system
         if test:
             s.collections = c.get_collections()
+            # s.print_object()
             mlab = ConnectionMlap()
             mlab.insert_doc(s.create_dict())
             del mlab
